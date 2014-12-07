@@ -1474,6 +1474,9 @@ plupload.Uploader = function(options) {
 					formData.append(name, value);
 				});
 
+				// Fix Blob filename(blob), this will make life easy.
+				if(!chunkBlob.name) chunkBlob.name = args.name;
+				
 				// Add file and send it
 				formData.append(up.settings.file_data_name, chunkBlob);
 				xhr.send(formData, {
